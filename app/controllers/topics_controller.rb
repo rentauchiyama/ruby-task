@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all
+    @topics = Topic.includes(:favorite_users)
   end
  
   def new
@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = current_user.topics.new(topic_params)
-    
+    # 省略せずに書く
     # @topic=Topic.new(topic_params)
     # @topic.user_id=current_user.id
 
@@ -20,7 +20,6 @@ class TopicsController < ApplicationController
       render :new
     end
   end
-
   private
   def topic_params
     params.require(:topic).permit(:image, :description)
