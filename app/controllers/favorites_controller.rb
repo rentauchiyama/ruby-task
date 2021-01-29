@@ -15,8 +15,8 @@ class FavoritesController < ApplicationController
     end
   end
   
-  def delete
-    if Favorite.find_by(id: params[:favorite]).destroy
+  def destroy
+    if Favorite.find_by(id: params[:favorite]).delete
       redirect_to topics_path, success: '削除しました'
     else
       redirect_to topics_path, danger: '削除に失敗しました'
