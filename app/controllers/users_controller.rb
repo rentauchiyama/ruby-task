@@ -13,11 +13,6 @@ class UsersController < ApplicationController
     flash.now[:success] = "登録に失敗しました"
     render :new
   end
-  # user = User.find_by(params[:email])
-  # if user && user.authenticate(params[:password])
-  #   flash.now[:alert] = "パスワードが重複しています。"
-  #   redirect_to render :new
-  # end
   end
   
 end
